@@ -8,7 +8,7 @@ var isValid = function(s) {
     for (var i = 0; i < s.length; i++) {
         var c = s[i];
         if (c in map) {
-            if (stack.length === 0 || stack.pop() !== map[c]) {
+            if (stack.pop() !== map[c]) {
                 return false;
             }
         } else {
@@ -16,7 +16,6 @@ var isValid = function(s) {
         }
     }
     return stack.length === 0;
-
 };
 
 console.log(isValid('()'));
