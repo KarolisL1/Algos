@@ -1,21 +1,20 @@
 var isValid = function(s) {
-    var stack = [];
-    var map = {
-        ')': '(',
-        ']': '[',
-        '}': '{'
+    let stack = [];
+    let map = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
     }
-    for (var i = 0; i < s.length; i++) {
-        var c = s[i];
-        if (c in map) {
-            if (stack.pop() !== map[c]) {
-                return false;
-            }
-        } else {
-            stack.push(c);
+    for (let thing of s) {
+        if (map[thing]) {
+            stack.push(map[thing]);
+        } 
+        else 
+        {
+            if (stack.pop() !== thing) return false;
         }
     }
-    return stack.length === 0;
+    return (!stack.length);
 };
 
 console.log(isValid('()'));
